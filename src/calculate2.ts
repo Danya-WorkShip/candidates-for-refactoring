@@ -1,3 +1,10 @@
-function calculate(a, b) {
-  return a + b;
-}
+function calculate(a: number, b: number): number => a + b
+
+/*
+Было плохо:
+Было громоздко и нехватало типизации
+
+Стало лучше:
+Теперь код типизирован, а также короче и понятнее.
+*/
+
