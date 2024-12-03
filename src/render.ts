@@ -1,14 +1,19 @@
-const render = (size: number) => {
-  const html = new StringBuffer('<hr');
+const render = (size: number): string => {
+  const html = ['<hr']; // Используем массив для сборки строки
 
   if (size > 0) {
-    html
-      .append(' size="')
-      .append(size + 1)
-      .append('"');
+    html.push(` size="${size + 1}"`); // Добавляем размер, если он больше нуля
   }
 
-  html.append('>');
+  html.push('>'); // Закрываем тег
 
-  return html.toString();
+  return html.join(''); // Собираем и возвращаем строку
 };
+
+/*
+Было плохо:
+Использование объекта `StringBuffer` излишнее.
+
+Стало лучше:
+Заменили `StringBuffer` на массив и использовали метод `join`, что делает код проще и быстрее.
+*/

@@ -3,19 +3,22 @@ enum ShapeType {
   Square,
 }
 
-function calculateArea(shape: ShapeType, radiusOrSide: number): number {
-  let area = 0;
+function calculateArea(shape: ShapeType, size: number): number {
+  // Используем объект вместо switch для упрощения
+  const areaCalculators: Record<ShapeType, (size: number) => number> = {
+    [ShapeType.Circle]: (radius) => Math.PI * Math.pow(radius, 2),
+    [ShapeType.Square]: (side) => Math.pow(side, 2),
+  };
 
-  switch (shape) {
-    case ShapeType.Circle:
-      area = Math.PI * Math.pow(radiusOrSide, 2);
-      break;
-    case ShapeType.Square:
-      area = Math.pow(radiusOrSide, 2);
-      break;
-  }
-
-  return area;
+  return areaCalculators[shape](size);
 }
 
 console.log(calculateArea(ShapeType.Circle, 5)); // Output: 78.54
+
+/*
+Было плохо:
+Использование switch делало код громоздким и сложным для расширения.
+
+Стало лучше:
+Заменили switch на объект с функциями. Код стал компактнее, легче читается и проще добавлять новые формы.
+*/

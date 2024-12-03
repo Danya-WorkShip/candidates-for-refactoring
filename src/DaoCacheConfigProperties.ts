@@ -1,4 +1,15 @@
 class DaoCacheConfigProperties {
-  alive: number; // alive cache time in days
-  elements: number; // maximum elements in cache
+  // Добавили конструктор для инициализации значений
+  constructor(
+    alive: number, // alive cache time in days
+    elements: number // maximum elements in cache
+  ) {}
 }
+
+/*
+Было плохо:
+Свойства были объявлены, но не было конструктора для их инициализации, что делало создание объектов менее удобным.
+
+Стало лучше:
+Добавили конструктор, который позволяет инициализировать значения при создании объекта.
+*/
